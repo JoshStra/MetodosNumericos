@@ -59,7 +59,7 @@ public class Jacobi {
         int iterations = 0;
         for (int iter = 0; iter < maxIterations; iter++) {
             for (int i = 0; i < n; i++) {
-                double sum = matrix[i][n];
+                double sum = matrix[i][matrix[i].length - 1];
                 for (int j = 0; j < n; j++) {
                     if (j != i) {
                         sum -= matrix[i][j] * previous[j];
