@@ -35,6 +35,19 @@ public class Jacobi {
         Arrays.fill(previous, 0);
         
         System.out.println("Ejecutando método de Jacobi...");
+        
+        int iterations = 0;
+        for (int iter = 0; iter < maxIterations; iter++) {
+            for (int i = 0; i < n; i++) {
+                double sum = matrix[i][n];
+                for (int j = 0; j < n; j++) {
+                    if (j != i) {
+                        sum -= matrix[i][j] * previous[j];
+                    }
+                }
+                current[i] = sum / matrix[i][i];
+            }
+            iterations++;
     }
 }
 
