@@ -27,5 +27,14 @@ public class Jacobi {
             System.out.println();
         }
         System.out.println();
+    }
+    public static void solveJacobi(double[][] matrix, double tolerance, int maxIterations) {
+        int n = matrix.length;
+        double[] previous = new double[n];
+        double[] current = new double[n];
+        Arrays.fill(previous, 0);
+        
+        System.out.println("Ejecutando método de Jacobi...");
+    }
 }
 
