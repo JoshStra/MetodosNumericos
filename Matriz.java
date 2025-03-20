@@ -15,7 +15,27 @@ public class Jacobi {
         for (int i = 0; i < testCases.length; i++) {
             System.out.println("\nCaso " + (i + 1) + ":");
             printMatrix(testCases[i]);
+            if (!isDiagonallyDominant(testCases[i])) {
+                System.out.println("Este sistema no es diagonalmente dominante y puede no converger con el método de Jacobi.");
+                continue;
+            }
+            solveJacobi(testCases[i], 1e-6, 100);
         }
+    }
+    public static boolean isDiagonallyDominant(double[][] matrix) {
+        int n = matrix.length;
+        for (int i = 0; i < n; i++) {
+            double sum = 0;
+            for (int j = 0; j < n; j++) {
+                if (i != j) {
+                    sum += Math.abs(matrix[i][j]);
+                }
+            }
+            if (Math.abs(matrix[i][i]) < sum) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void printMatrix(double[][] matrix) {
@@ -35,7 +55,7 @@ public class Jacobi {
         Arrays.fill(previous, 0);
         
         System.out.println("Ejecutando método de Jacobi...");
-        
+
         int iterations = 0;
         for (int iter = 0; iter < maxIterations; iter++) {
             for (int i = 0; i < n; i++) {
@@ -48,6 +68,27 @@ public class Jacobi {
                 current[i] = sum / matrix[i][i];
             }
             iterations++;
+
+            if (converged(previous, current, tolerance)) {
+                System.out.println("Solución encontrada después de " + iterations + " iteraciones:");
+                for (int i = 0; i < n; i++) {
+                    System.out.printf("x%d = %.4f\n", i + 1, current[i]);
+                }
+                return;
+            }
+            System.arraycopy(current, 0, previous, 0, n);
+        }
+        System.out.println("No se alcanzó la convergencia en " + maxIterations + " iteraciones.");
     }
+    
+    public static boolean converged(double[] prev, double[] curr, double tol) {
+        for (int i = 0; i < prev.length; i++) {
+            if (Math.abs(curr[i] - prev[i]) > tol) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
 }
 
