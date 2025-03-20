@@ -9,12 +9,7 @@ public class Jacobi {
                 {2, -1, 10, -1, -11},
                 {0, 3, -1, 8, 15}
             },
-            { // Caso 2
-                {4, -1, 0, 0, 3},
-                {-1, 4, -1, 0, 4},
-                {0, -1, 4, -1, 5},
-                {0, 0, -1, 3, 6}
-            }
+
         };
 
         for (int i = 0; i < testCases.length; i++) {
@@ -24,10 +19,13 @@ public class Jacobi {
     }
 
     public static void printMatrix(double[][] matrix) {
+        System.out.println("Matriz original:");
         for (double[] row : matrix) {
-            System.out.println(Arrays.toString(row));
+            for (double value : row) {
+                System.out.printf("%8.4f", value);
+            }
+            System.out.println();
         }
         System.out.println();
-    }
 }
 
