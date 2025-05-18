@@ -5,7 +5,7 @@ La interpolación de Newton construye un polinomio que pasa exactamente por un c
 
 ## [Pseudocódigo en PSeInt](./InterpolacionNewton.psc)
 
-## [Código en Java](./NewtonInterpolacion.java)
+## [Código en Java](./NewtonInterpolation.java)
 
 ## Ejemplo de aplicación
 - Calcular el valor interpolado de:
